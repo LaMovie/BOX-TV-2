@@ -240,7 +240,15 @@ section div::-webkit-scrollbar { width: var(--scrollbar-width, 0px); height: var
 
 <script>
   Screens.addEventListener('click', function(){
-      Scree();
+      if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.mozRequestFullScreen) { // Firefox
+    iframe.mozRequestFullScreen();
+  } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) { // IE/Edge
+    iframe.msRequestFullscreen();
+  }
 });
   Horz.addEventListener('click', function(){
       scriptHorz();
@@ -263,58 +271,7 @@ fullscreenButton.addEventListener('click', function() {
     iframe.msRequestFullscreen();
   }
 });
-</script>
- 
-      <!-- Full Screen 2 -->
-<script>
-       function Scree(){           
-    Modal.style.top = '30vh';
-    Modal2.style.background = 'transparent';
-    Sect.style.transform = 'translate(0, 12vh)';   
-    Bloque.style.border = '#000'; 
-   document.body.style.scale = '270%'; 
-   document.body.style.top = '0vh';
-   document.body.style.left = '35vh'; 
-   document.body.style.transform = 'rotate(90deg)';
-   Back.style.display = 'block';
-};
-
-   Back.addEventListener('click', function(){
-     Bloque.style.border = 'green';
-     Back.style.display = 'none';
-     Modal.style.cssText = '';
-     Sect.style.cssText = '';
-  document.body.style.cssText = ''; 
-});  
-</script> 
-
-     <!-- Script Horizontal -->
-<script>
-     function scriptHorz(){
-    Modal.style.top = '10vh';
-    Modal.style.left = '45vh';   
-    Modal.style.width = '150%';
-    Sect.style.transform = 'translate(25vh, -20vh)';   
-    Bloque.style.border = '#000'; 
-   document.body.style.scale = '165%'; 
-   document.body.style.top = '-45vh';
-   document.body.style.left = '-40vh'; 
-   Back.style.display = 'block';
-   var elemento = document.querySelector('section div:first-child');
-elemento.style.border = "2px solid #000";  
-};
-
-   Back.addEventListener('click', function(){
-     Bloque.style.border = 'green';
-     Back.style.display = 'none';
-     Modal.style.cssText = '';
-     Sect.style.cssText = '';
-  document.body.style.cssText = '';
-  Modal2.style.background = '#000';
-  var elemento = document.querySelector('section div:first-child');
-elemento.style.border = "2px solid green";    
-});
-</script>
+</script>    
 
         <!-- HORIZONTAL -->
 <script>
